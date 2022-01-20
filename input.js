@@ -42,6 +42,11 @@ const handleUserInput = function(key) {
     return;
   }
 
+  if (key === "m") {
+    connection.write("say_____");
+    return;
+  }
+
 };
 
 
