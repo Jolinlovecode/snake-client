@@ -6,7 +6,10 @@ const connect = function () {
     host: // IP address here,
     port: // PORT number here,
   });
-
+  
+  conn.on('data', function(message){
+    console.log(`server sent:`,message);
+  });
   // interpret incoming data as text
   conn.setEncoding("utf8");
 
@@ -15,6 +18,3 @@ const connect = function () {
 
 console.log("Connecting ...");
 
-client.on('connect', function(){
-  console.log(`i have connected to the server.`);
-});
