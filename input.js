@@ -1,4 +1,8 @@
-const setupInput = function () {
+
+let connection = require("./play.js");
+
+const setupInput = (conn) => {
+  connection = conn;
   const stdin = process.stdin;
   stdin.setRawMode(true);
   stdin.setEncoding("utf8");
@@ -7,12 +11,39 @@ const setupInput = function () {
 
   stdin.on("data", handleUserInput);
   
-
   return stdin;
 };
 
-const handleUserInput = function (message) {
-  conn.write(message);
+const handleUserInput = function(key) {
+  conn.write(key);
+
+  if (key === "x") {
+    process.exit();
+    return;
+  }
+
+  if (key === "w") {
+    connection.write("Move: up");
+    return;
+  }
+
+  if (key === "a") {
+    connection.write("Move: left");
+    return;
+  }
+
+  if (key === "s") {
+    connection.write("Move: down");
+    return;
+  }
+
+  if (key === "d") {
+    connection.write("Move: right");
+    return;
+  }
+
 };
+
+
 
  module.exports = setupInput;

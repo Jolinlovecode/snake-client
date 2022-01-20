@@ -5,3 +5,5 @@ console.log("Connecting ...");
 connect();
 
 setupInput();
+
+module.export = connect;
